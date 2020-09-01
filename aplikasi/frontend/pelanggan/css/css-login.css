@@ -1,0 +1,91 @@
+body{
+	margin-bottom:0px;
+	padding:0px;
+	background:url(Gambar/background1.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family:Tahoma, Geneva, sans-serif;
+	height: 100vh;
+}	
+.text{
+	padding: 60px;
+	text-align:center;
+	font-family:"Berlin Sans FB";
+	font-size: 18px;
+}
+.login-box1{
+	width: 320px;
+	height: 350px;
+	background: url(Gambar/background2.jpg);
+	color:#000;
+	top: 55%;
+	right: 15%;
+	position: absolute;
+	box-sizing:border-box;
+	padding: 70px;
+	transform: translate(-50%,-50%);
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border: 3px solid rgba(0,0,0,0.5);
+	border-color:#F90;
+}
+.login-box1 h1{
+	margin-top: -30px;
+	padding: 0 0 5px;
+	text-align: center;
+	font-size: 18px;
+}
+.login-box1 p{
+	margin-top: 10px;
+    margin-bottom: 0px;
+	padding: 0px;
+	font-weight:bold;
+	font-size: 13px;
+}
+.login-box1 input{
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.login-box1 input[type="text"], input[type=password]{
+	border:none;
+	border-bottom:2px solid #F63;
+	background:transparent;
+	outline:none;
+	height:40px;
+	color:#666;
+	font-size:16px;
+}
+.login-box1 input[type="submit"]{
+	border:none;
+	outline:none;
+	height:40px;
+	color:#F60;
+	font-size:18px;
+	background:#FFF;
+}
+.login-box1 input[type="submit"]:hover{
+	margin-bottom: 10px;
+    cursor:pointer;
+	background:#FC9;
+	color:#F60;
+}
+.login-box2{
+	width:320px;
+	height:350px;
+	background:url(Gambar/Terrain.jpg);
+	background-size: cover;
+	top: 50%;
+	left: -50%;
+	position: absolute;
+	box-sizing: border-box;
+	padding:70px;
+	transform: translate(-50%,-50%);
+	border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	border: 3px solid rgba(0,0,0,0.5);
+	border-color:#F90;
+}
+	
+
+
