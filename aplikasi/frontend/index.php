@@ -7,7 +7,6 @@
 	<script type="text/javascript" src="assets/js/jquery.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.js"></script>
-	<?php include 'admin/config.php'; ?>
 	<style type="text/css">
     body{
         margin-bottom:0px;
@@ -49,7 +48,7 @@
 		if(isset($_GET['pesan'])){
 			if($_GET['pesan'] == "gagal"){
 				echo
-                    "<div style='margin-bottom:-55px' class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span>  Login Gagal !! Username dan Password Salah !!</div>";
+					"<div style='margin-bottom:-55px' class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span>  Login Gagal !! Username dan Password Salah !!</div>";
 			}
 		}
 		?>
