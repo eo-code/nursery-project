@@ -92,7 +92,7 @@ include "setting_navbar.php";
                 // values('','$nama','$brand','$kategori','$supplier','$diskon','$berat','$harga','$stok','$nama_foto','$deskripsi')") or die(mysqli_error());
                 $save = mysqli_query($conect, "INSERT INTO master_data VALUES ('','$nama','$stok','$harga','$deskripsi','$nama_foto','$kategori','$nama_kategori')");
                 if ($save) { //jika simpan berhasil
-                    echo "<script>alert('Data Berhasil Disimpan');document.location='produk.php'</script>";
+                    echo "<script>alert('Data Berhasil Disimpan');document.location='master_data.php'</script>";
                 } else {  //jika simpan gagal
                     $error = "<div class='alert alert-danger alert-dismissable'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
