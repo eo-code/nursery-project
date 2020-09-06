@@ -26,6 +26,7 @@ $conect = mysqli_connect($server, $user, $pass, $database) or die('Error Connect
                 <h3>
                     Daftar Produk
                 </h3>
+
             </div>
         </div>
         <!-- /.row -->
@@ -46,8 +47,8 @@ $conect = mysqli_connect($server, $user, $pass, $database) or die('Error Connect
                         </div>
                         <div class="col-lg-6">
                             <!-- form pencarian produk -->
-                            <form action="cari_produk.php" method="get" class="form-inline text-right">
-                                <input type="text" class="form-control" name="qw" placeholder="Cari Produk" required>
+                            <form action="cari_act.php" method="get" class="form-inline text-right">
+                                <input type="text" class="form-control" name="cari" placeholder="Cari Produk" required>
                                 <button type="submit" class="btn btn-primary">Cari</button>
                             </form>
                             <!-- form pencarian produk -->
@@ -88,8 +89,15 @@ $conect = mysqli_connect($server, $user, $pass, $database) or die('Error Connect
                                     /*Jika variabel $pg kosong maka akan menampilkan halaman pertama dengan batas baris 10*/
 
                                     // $ambildata = mysqli_query($conect, "select*from kateogri, master_data where kategori.Id_kategori=tb_brand.id_brand and tb_produk.id_kategori=tb_kategori.id_kategori and tb_produk.id_supplier=tb_supplier.id_supplier order by id_produk desc limit $posisi, $batas");
-                                    $ambildata = mysqli_query($conect, "SELECT master_data.*, kategori.* FROM master_data LEFT JOIN kategori ON master_data.Id_kategori = kategori.Id_kategori ORDER BY Nama_tanaman DESC limit $posisi, $batas");
-                                    $jumlah = mysqli_num_rows($ambildata);  /*mysql_num_rows untuk menghitung total baris di tabel databse*/
+                                    if (isset($_GET['cari'])) {
+                                        $cari = $_GET['cari'];
+                                        $ambildata = mysqli_query($conect, "SELECT master_data.*, kategori.* FROM master_data LEFT JOIN kategori ON master_data.Id_kategori = kategori.Id_kategori WHERE master_data.Nama_tanaman LIKE '$cari' OR master_data.Kategori LIKE '$cari'  ORDER BY Nama_tanaman ASC limit $posisi, $batas");
+                                        $jumlah = mysqli_num_rows($ambildata);
+                                    } else {
+                                        $ambildata = mysqli_query($conect, "SELECT master_data.*, kategori.* FROM master_data LEFT JOIN kategori ON master_data.Id_kategori = kategori.Id_kategori  ORDER BY Nama_tanaman ASC limit $posisi, $batas");
+                                        $jumlah = mysqli_num_rows($ambildata);
+                                    }
+                                    /*mysql_num_rows untuk menghitung total baris di tabel databse*/
                                     if ($jumlah == 0) {  //jika tidak ada data
                                     ?>
                                         <tr>
@@ -110,8 +118,8 @@ $conect = mysqli_connect($server, $user, $pass, $database) or die('Error Connect
                                                 <td><?php echo $a['Keterangan']; ?></td>
                                                 <td><img src="../../Aplikasi/img/bg-img/gambar_tanaman/<?= $a['Kategori']; ?>/<?= $a['Gambar']; ?>" alt="" width="70px"></td>
 
-                                                <td><a href="hapus_produk.php?id_produk=<?php echo $a['id_produk']; ?>" onclick="return confirm('Yakin akan meghapus data ini')" title="Hapus data"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i> Hapus</button></a>
-                                                    <a href="edit_produk.php?id_produk=<?php echo $a['id_produk']; ?>" title="Edit data"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</button> </a>
+                                                <td><a href="hapus.php?id=<?php echo $a['Id_master_data']; ?>" onclick="return confirm('Yakin akan meghapus data ini')" title="Hapus data"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i> Hapus</button></a>
+                                                    <a href="edit.php?id=<?php echo $a['Id_master_data']; ?>" title="Edit data"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</button> </a>
                                                 </td>
                                             </tr>
                                     <?php
